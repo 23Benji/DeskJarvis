@@ -28,7 +28,7 @@ function App() {
 
       {/* Clock (top center-left) */}
       <Draggable handle=".drag-handle" nodeRef={clockRef}>
-        <div ref={clockRef} className="widget" style={{ top: '80px', left: '40%' }}>
+        <div ref={clockRef} className="widget" style={{ top: '5%', left: '35%' }}>
           <div className="drag-handle"></div>
           <Clock />
         </div>
@@ -39,7 +39,7 @@ function App() {
         <div
           ref={weatherRef}
           className="widget"
-          style={{ top: '100px', right: '150px', position: 'absolute' }}
+          style={{ top: '15%', right: '7%', position: 'absolute' }}
         >
           <div className="drag-handle"></div>
           <Weather />
@@ -51,7 +51,7 @@ function App() {
         <div
           ref={calendarRef}
           className="widget"
-          style={{ bottom: '100px', left: '50px', position: 'absolute' }}
+          style={{ bottom: '5%', left: '5%', position: 'absolute' }}
         >
           <div className="drag-handle"></div>
           <Calendar />
@@ -63,7 +63,7 @@ function App() {
         <div
           ref={todoRef}
           className="widget"
-          style={{ top: '45%', right: '150px', position: 'absolute' }}
+          style={{ top: '40%', right: '3%', position: 'absolute' }}
         >
           <div className="drag-handle"></div>
           <ToDo />
@@ -75,7 +75,7 @@ function App() {
         <div
           ref={notesRef}
           className="widget"
-          style={{ top: '10%', left: '50px', transform: 'translateY(-50%)' }}
+          style={{ top: '10%', left: '5%', transform: 'translateY(-50%)' }}
         >
           <div className="drag-handle"></div>
           <Notes />
@@ -87,7 +87,7 @@ function App() {
         <div
           ref={musicRef}
           className="widget"
-          style={{ bottom: '5%', right: '5%', position: 'absolute' }}
+          style={{ bottom: '5%', right: '35%', position: 'absolute' }}
         >
           <div className="drag-handle"></div>
           <MusicPlayer />
