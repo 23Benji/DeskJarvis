@@ -103,14 +103,16 @@ const ClockWidget = () => {
         {activeTab === 'timer' && (
           <div>
             <div>{formatTime(timer)}</div>
-            <input
-              type="range"
-              min="10"
-              max="1800"
-              step="10"
-              value={timer}
-              onChange={(e) => setTimer(Number(e.target.value))}
-            />
+
+            {/* ⏱️ New preset time buttons instead of the range slider */}
+            <div className="button-row" style={{ marginTop: '10px' }}>
+              {[30, 60, 300, 600, 900].map((sec) => (
+                <button key={sec} onClick={() => setTimer(sec)}>
+                  {sec < 60 ? `${sec}s` : `${sec / 60}m`}
+                </button>
+              ))}
+            </div>
+
             <div className="button-row">
               <button onClick={() => setRunning(!running)}>
                 {running ? 'Pause' : 'Start'}
