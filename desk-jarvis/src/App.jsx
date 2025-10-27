@@ -9,6 +9,7 @@ import ToDo from './components/ToDo';
 import Notes from './components/Notes';
 import MusicPlayer from './components/MusicPlayer';
 import AiWidget from './components/AiWidget';
+import ResizableImageWidget from './components/ResizableImageWidget';
 
 function App() {
   const clockRef = useRef(null);
@@ -18,6 +19,7 @@ function App() {
   const notesRef = useRef(null);
   const musicRef = useRef(null);
   const aiRef = useRef(null);
+  const imageRef = useRef(null);
 
   return (
     <div className="dashboard" nodeRef={aiRef}>
@@ -93,6 +95,19 @@ function App() {
           <MusicPlayer />
         </div>
       </Draggable>
+
+      {/* RESIZABLE IMAGE (bottom center) */}
+      <div
+        ref={imageRef}
+        style={{
+          position: 'absolute',
+          top: '25%',
+          left: '20%',
+          transform: 'translateX(-50%)',
+        }}
+      >
+        <ResizableImageWidget imageSrc="/images/mountains.jpg" />
+      </div>
     </div>
   );
 }
