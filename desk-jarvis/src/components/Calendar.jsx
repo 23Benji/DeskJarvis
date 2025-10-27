@@ -1,35 +1,57 @@
 import React, { useState, useEffect } from 'react';
 
 const Calendar = () => {
-  const [calendarText, setCalendarText] = useState('');
+  const [calendarGrid, setCalendarGrid] = useState([]);
+  const [monthInfo, setMonthInfo] = useState('');
 
   useEffect(() => {
     const now = new Date();
+    const today = now.getDate();
     const year = now.getFullYear();
     const month = now.toLocaleString('default', { month: 'long' });
     const daysInMonth = new Date(year, now.getMonth() + 1, 0).getDate();
-
     const firstDay = new Date(year, now.getMonth(), 1).getDay();
-    const days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
-    let grid = days.join(' ') + '\n';
 
-    let week = Array(firstDay).fill('  ');
+    const days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+    const grid = [];
+    let week = Array(firstDay).fill(null);
 
     for (let d = 1; d <= daysInMonth; d++) {
-      week.push(d.toString().padStart(2, ' '));
+      week.push(d);
       if (week.length === 7 || d === daysInMonth) {
-        grid += week.join(' ') + '\n';
+        grid.push(week);
         week = [];
       }
     }
 
-    setCalendarText(`${month.toUpperCase()} ${year}\n\n${grid}`);
+    setMonthInfo(`${month.toUpperCase()} ${year}`);
+    setCalendarGrid([days, ...grid]);
   }, []);
 
   return (
     <div className="calendar-widget">
       <h3 className="widget-title">Calendar</h3>
-      <pre className="calendar-grid">{calendarText}</pre>
+      <div className="calendar-grid">
+        {calendarGrid.map((week, i) => (
+          <div key={i} className="calendar-row">
+            {week.map((day, j) =>
+              day ? (
+                <span
+                  key={j}
+                  className={`calendar-day ${
+                    day === new Date().getDate() ? 'today' : ''
+                  }`}
+                >
+                  {day.toString().padStart(2, '0')}
+                </span>
+              ) : (
+                <span key={j} className="calendar-day empty"> </span>
+              )
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="calendar-footer">{monthInfo}</div>
     </div>
   );
 };
