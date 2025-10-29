@@ -22,7 +22,7 @@ import ResizableImageWidget from './components/ResizableImageWidget';
 
 function App() {
   const [widgets, setWidgets] = useState({
-    clock: false,
+    clock: true,
     weather: true,
     calendar: true,
     todo: true,
@@ -126,7 +126,7 @@ function App() {
       )}
 
       {widgets.image && (
-        <div style={{ position: 'absolute', bottom: '5%', left: '50%', transform: 'translateX(-50%)' }}>
+        <div style={{ position: 'absolute', top: '10%', left: '25%', transform: 'translateX(-50%)' }}>
           <ResizableImageWidget imageSrc="/images/mountains.jpg" />
           <button className="hide-btn" onClick={() => hideWidget('image')}>×</button>
         </div>
